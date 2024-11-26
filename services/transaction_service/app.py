@@ -1,5 +1,4 @@
 from flask import Flask
-
 from transaction_service_blueprint import transaction_srvice_bp
 
 app = Flask(__name__)
