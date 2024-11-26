@@ -1,4 +1,4 @@
-from datetime import datetime
+import uuid
 
 class TransactionRepository:
     def __init__(self, driver):
@@ -20,7 +20,7 @@ class TransactionRepository:
             result = session.run(query, {
                 'source_id': transaction_data['source_id'],
                 'target_id': transaction_data['target_id'],
-                'transaction_id': str(datetime.now().timestamp()),
+                'transaction_id': str(uuid.uuid4()),
                 'amount': transaction_data['amount'],
                 'timestamp': transaction_data['timestamp'],
                 'currency': transaction_data['currency']
@@ -45,7 +45,7 @@ class TransactionRepository:
                     'target_id': record['target_id'],
                     'amount': record['amount'],
                     'currency': record['currency'],
-                    'timestamp': record['timestamp'].iso_format()
+                    'timestamp': record['timestamp'].isoformat()
                 }
             return None
 

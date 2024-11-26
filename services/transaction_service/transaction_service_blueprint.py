@@ -10,13 +10,12 @@ transaction_srvice_bp = Blueprint('transaction_srvice', __name__, url_prefix='/a
 @transaction_srvice_bp.route('/', methods=['POST'])
 def create_transaction():
     data = request.json
-    required_fields = ['source_id', 'target_id', 'amount', 'currency']
+    required_fields = ['source_id', 'target_id', 'amount','timestamp', 'currency']
 
     if not all(field in data for field in required_fields):
         return jsonify({'error': 'Missing required fields'}), 400
 
     try:
-        data['timestamp'] = datetime.now().isoformat()
         repo = TransactionRepository(neo4j_driver)
         transaction_id = repo.create_transaction(data)
 
