@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from flask import Blueprint, jsonify, request, json
 
 from config import neo4j_driver, redis_client
