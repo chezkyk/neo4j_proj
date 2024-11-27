@@ -3,7 +3,6 @@ import json
 from datetime import datetime, timedelta
 import requests
 
-
 class TestDataGenerator:
     def __init__(self, base_url="http://localhost:5001"):
         self.base_url = base_url
